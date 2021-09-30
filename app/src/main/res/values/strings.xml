@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">HealthKart</string>
+
+
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="email_id">Email ID</string>
+    <string name="password">Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="login">Login</string>
+    <string name="sign_in">Log In</string>
+    <string name="already_have_an_account_sign_in">Already have an account ? Sign in</string>
+    <string name="last_name">Last Name</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="contine">contine</string>
+    <string name="invalid_name">Please Enter Email Id</string>
+    <string name="invalid_phone">Please Enter Valid Phone Number</string>
+    <string name="not_empty">This field should not be empty</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="read_more">read more</string>
+    <string name="logout">Logout</string>
+    <string name="download">Download</string>
+    <string name="description">description</string>
+    <string name="_26_sep_2021">26 sep 2021</string>
+    <string name="title">Title</string>
+    <string name="textview">TextView</string>
+    <string name="number">Enter Phone Number</string>
+
+
+
+</resources>
