@@ -17,7 +17,6 @@ import java.util.List;
 public class ArticleViewmodel extends AndroidViewModel {
 
     Articlerepo articlerepo;
-    MutableLiveData<ArticlesItem> itemMutableLiveData = new MutableLiveData<>();
 
     public ArticleViewmodel(@NonNull Application application) {
         super(application);

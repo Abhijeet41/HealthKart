@@ -62,7 +62,7 @@ public class ApiClient {
         Retrofit.Builder builder = new Retrofit.Builder()
                 .client(httpClient.build())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-               // .addConverterFactory(ScalarsConverterFactory.create()) //to get JsonArry response in string
+                .addConverterFactory(ScalarsConverterFactory.create()) //to get JsonArry response in string
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .baseUrl(Base_Url);
 

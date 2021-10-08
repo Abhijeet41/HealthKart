@@ -15,6 +15,7 @@ import dagger.Component;
 public interface MyComponent {
 
     SharedPreferenceStorage sharedPreferenceStorage();
+
     void inject(MyApplication myApplication);
 
 }

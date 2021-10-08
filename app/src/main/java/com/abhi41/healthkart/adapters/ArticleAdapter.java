@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.abhi41.healthkart.R;
@@ -37,15 +39,16 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHolder> {
+public class ArticleAdapter extends ListAdapter<ArticlesItem,ArticleAdapter.ViewHolder> {
 
-    private List<ArticlesItem> articlesList;
-    private Context context;
+    /*private List<ArticlesItem> articlesList;
+    private Context context;*/
     private ArticleInterface articleInterface;
 
-    public ArticleAdapter(List<ArticlesItem> articlesList, Context context,ArticleInterface articleInterface) {
-        this.articlesList = articlesList;
-        this.context = context;
+
+
+    public ArticleAdapter(ArticleInterface articleInterface) {
+        super(ArticlesItem.itemCallback);
         this.articleInterface = articleInterface;
     }
 
@@ -59,10 +62,9 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
         return new ViewHolder(binding);
     }
 
-    @SuppressLint("CheckResult")
     @Override
-    public void onBindViewHolder(@NonNull ArticleAdapter.ViewHolder holder, int position) {
-        ArticlesItem articles = articlesList.get(position);
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        ArticlesItem articles = getItem(position);
 
         holder.binding.setArticle(articles);
         holder.binding.executePendingBindings();
@@ -79,7 +81,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
         holder.binding.constraintMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                articleInterface.onItemClick(articlesList,position);
+                articleInterface.onItemClick(getCurrentList(),position);
             }
         });
 
@@ -89,17 +91,6 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
     }
 
 
-
-
-    @Override
-    public int getItemCount() {
-
-        if (articlesList == null) {
-            return 0;
-        }
-
-        return articlesList.size();
-    }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         SingleArticleRowBinding binding;

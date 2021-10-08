@@ -2,9 +2,12 @@ package com.abhi41.healthkart.model;
 
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
 import androidx.databinding.BindingAdapter;
+import androidx.recyclerview.widget.DiffUtil;
 
 import java.util.List;
+import java.util.Objects;
 
 import com.bumptech.glide.Glide;
 import com.google.gson.annotations.SerializedName;
@@ -112,4 +115,27 @@ public class ArticlesItem{
 				.fitCenter()
 				.into(imageView);
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		ArticlesItem that = (ArticlesItem) o;
+		return isFeatured() == that.isFeatured() && getSummary().equals(that.getSummary()) && getPublishedAt().equals(that.getPublishedAt()) && getImageUrl().equals(that.getImageUrl()) && getNewsSite().equals(that.getNewsSite()) && getId().equals(that.getId()) && getTitle().equals(that.getTitle()) && getUrl().equals(that.getUrl()) && getLaunches().equals(that.getLaunches()) && getEvents().equals(that.getEvents()) && getUpdatedAt().equals(that.getUpdatedAt());
+	}
+
+	public static DiffUtil.ItemCallback<ArticlesItem> itemCallback =new DiffUtil.ItemCallback<ArticlesItem>() {
+		@Override
+		public boolean areItemsTheSame(@NonNull ArticlesItem oldItem, @NonNull ArticlesItem newItem) {
+			return oldItem.getId().equals(newItem.getId());
+		}
+
+		@Override
+		public boolean areContentsTheSame(@NonNull ArticlesItem oldItem, @NonNull ArticlesItem newItem) {
+			return oldItem.equals(newItem);
+		}
+	};
+
+
+
 }

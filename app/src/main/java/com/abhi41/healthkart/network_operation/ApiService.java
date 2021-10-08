@@ -22,9 +22,6 @@ public interface ApiService {
     Observable<List<ArticlesItem>> apiArticles();
 
 
- /*   @GET("api/v2/articles")
-    Single<SingleArticle> apiGetData(@Query("id")String id);*/
-
     @GET("api/v2/articles")
     Observable<List<SingleArticle>> apiGetData(@Query("id")String id);
 

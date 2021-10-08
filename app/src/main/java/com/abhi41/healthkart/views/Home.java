@@ -43,7 +43,7 @@ public class Home extends Fragment implements ArticleAdapter.ArticleInterface {
     private static final String TAG = "Home";
     private ArticleAdapter articleAdapter;
     FragmentHomeBinding binding;
-    private List<ArticlesItem> articlesItemList = new ArrayList<>();
+    //private List<ArticlesItem> articlesItemList = new ArrayList<>();
 
     MyComponent myComponent;
     SharedPreferenceStorage sharedPreferenceStorage;
@@ -84,10 +84,12 @@ public class Home extends Fragment implements ArticleAdapter.ArticleInterface {
         viewmodel.getProducts().observe(getViewLifecycleOwner(), new Observer<List<ArticlesItem>>() {
             @Override
             public void onChanged(List<ArticlesItem> articles) {
-                articlesItemList.clear();
+              /*  articlesItemList.clear();
 
                 articlesItemList.addAll(articles);
-                articleAdapter.notifyDataSetChanged();
+                articleAdapter.notifyDataSetChanged();*/
+
+                articleAdapter.submitList(articles);
             }
         });
 
@@ -111,7 +113,7 @@ public class Home extends Fragment implements ArticleAdapter.ArticleInterface {
         myComponent = ((MyApplication) getActivity().getApplication()).getSharedPrefModule();
         sharedPreferenceStorage = myComponent.sharedPreferenceStorage();
 
-        articleAdapter = new ArticleAdapter(articlesItemList, getActivity(),this);
+        articleAdapter = new ArticleAdapter(this);
         binding.rvArticles.setAdapter(articleAdapter);
 
     }
